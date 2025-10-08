@@ -41,34 +41,28 @@ export default function TestimonialsSlider() {
     return () => clearTimeout(t)
   }, [mounted])
 
-  const settings = {
-    mobileFirst: true,              // <— crucial
-    infinite: len > 1,
-    speed: 500,
-    arrows: true,
-    nextArrow: <Arrow dir="right" />,
-    prevArrow: <Arrow dir="left" />,
-    dots: false,
-    autoplay: false,
+ const settings = {
+  mobileFirst: false,
+  infinite: len > 1,
+  speed: 500,
+  arrows: true,
+  nextArrow: <Arrow dir="right" />,
+  prevArrow: <Arrow dir="left" />,
+  dots: false,
+  autoplay: false,
 
-    // base (phones)
-    slidesToShow: Math.min(len, 3),
-    slidesToScroll: 1,
+  // base = phones (<768px)
+  slidesToShow: Math.min(len, 3),
+  slidesToScroll: 1,
 
-    // min-width breakpoints
-     responsive: [
-    { breakpoint: 768, settings: { slidesToShow: Math.min(len, 1) } },  // tablets and up
-    { breakpoint: 1200, settings: { slidesToShow: Math.min(len, 3) } }, // laptops and up
-    { breakpoint: 1536, settings: { slidesToShow: Math.min(len, 4) } }, // big screens
+  // MIN-width breakpoints (because mobileFirst is true)
+  responsive: [
+    { breakpoint: 768,  settings: { slidesToShow: Math.min(len, 1) } },  // ≥768px
+    { breakpoint: 1200, settings: { slidesToShow: Math.min(len, 3) } },  // ≥1200px
+    { breakpoint: 1536, settings: { slidesToShow: Math.min(len, 4) } },  // ≥1536px
   ],
+}
 
-    appendDots: dots => (
-      <div style={{ bottom: "-70px" }}>
-        <ul className="!m-0 flex items-center justify-center gap-2">{dots}</ul>
-      </div>
-    ),
-    customPaging: () => <div className="h-1 w-8 rounded-full border border-rose-500" />,
-  }
 
   return (
     <section className="bg-[#F3F8FC] py-16">
