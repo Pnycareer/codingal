@@ -12,13 +12,13 @@ import LearnToCodeSection from '../sections/LearnToCodeSection'
 const MainHome = () => {
   return (
     <>
-    <Header/>
+    {/* <Header/>
     <CoursesSection/>
     <PricingSection/>
-    <BenefitsSection/>
+    <BenefitsSection/> */}
     <TestimonialsSlider />
-     <ReviewsSection />
-     <LearnToCodeSection/>
+     {/* <ReviewsSection />
+     <LearnToCodeSection/> */}
     </>
   )
 }
