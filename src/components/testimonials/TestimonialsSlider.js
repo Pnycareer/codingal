@@ -1,5 +1,6 @@
+// TestimonialsSlider.jsx
 "use client"
-
+import { useEffect, useRef } from "react"
 import Slider from "react-slick"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
@@ -7,6 +8,7 @@ import TestimonialCard from "./TestimonialCard"
 import { testimonials } from "../data/TestimonialsData"
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+
 
 
 const Arrow = ({ onClick, dir }) => (
@@ -20,60 +22,83 @@ const Arrow = ({ onClick, dir }) => (
   </button>
 )
 
-const settings = {
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  arrows: true,
-  nextArrow: <Arrow dir="right" />,
-  prevArrow: <Arrow dir="left" />,
-  dots: false,
-  autoplay: false,
-  responsive: [
-     { breakpoint: 640,  settings: { slidesToShow: 2 } },
-    { breakpoint: 1024, settings: { slidesToShow: 3 } },
-  ],
-  // custom dots: thin dashed line look
-  appendDots: dots => (
-    <div style={{ bottom: "-70px" }}>
-      <ul className="!m-0 flex items-center justify-center gap-2">{dots}</ul>
-    </div>
-  ),
-  customPaging: () => (
-    <div className="h-1 w-8 rounded-full  border border-rose-500" />
-  ),
-}
 
-const TestimonialsSlider = () => {
-  return (
-    <section className="bg-[#F3F8FC] py-16">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl font-extrabold leading-tight text-zinc-900 md:text-4xl">
-            Students and parents love Codingal’s training program
-            <br />
-            and curriculum
-          </h2>
-        </div>
+export default function TestimonialsSlider() {
+  const sliderRef = useRef(null)
+  const len = testimonials.length
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="relative"
-        >
-          <Slider {...settings}>
-            {testimonials.map(t => (
-              <div key={t.id} className="px-4">
-                <TestimonialCard t={t} />
-              </div>
-            ))}
-          </Slider>
-        </motion.div>
+  const settings = {
+    // start from mobile
+    mobileFirst: true,
+    dots: false,
+    arrows: true,
+    nextArrow: <Arrow dir="right" />,
+    prevArrow: <Arrow dir="left" />,
+    autoplay: false,
+    speed: 500,
+    cssEase: "ease-in-out",
+
+    // clamp to data length
+    slidesToShow: Math.min(len, 1),
+    slidesToScroll: 1,
+    infinite: len > 1,
+
+    responsive: [
+      {
+        breakpoint: 640, // >=640px
+        settings: {
+          slidesToShow: Math.min(len, 2),
+          slidesToScroll: 1,
+          infinite: len > 1,
+        },
+      },
+      {
+        breakpoint: 1024, // >=1024px
+        settings: {
+          slidesToShow: Math.min(len, 3),
+          slidesToScroll: 1,
+          infinite: len > 2,
+        },
+      },
+      {
+        breakpoint: 1280, // optional: >=1280px
+        settings: {
+          slidesToShow: Math.min(len, 4),
+          slidesToScroll: 1,
+          infinite: len > 3,
+        },
+      },
+    ],
+
+    // (keep your custom dots if you want)
+    appendDots: dots => (
+      <div style={{ bottom: "-70px" }}>
+        <ul className="!m-0 flex items-center justify-center gap-2">{dots}</ul>
       </div>
-    </section>
+    ),
+    customPaging: () => (
+      <div className="h-1 w-8 rounded-full border border-rose-500" />
+    ),
+  }
+
+  // nudge slick after hydration so it recalcs on real phones
+  useEffect(() => {
+    const t = setTimeout(() => {
+      window.dispatchEvent(new Event("resize"))
+      if (sliderRef.current?.innerSlider) {
+        sliderRef.current.innerSlider.onWindowResized()
+      }
+    }, 0)
+    return () => clearTimeout(t)
+  }, [])
+
+  return (
+    <Slider ref={sliderRef} {...settings}>
+      {testimonials.map(t => (
+        <div key={t.id} className="px-4">
+          <TestimonialCard t={t} />
+        </div>
+      ))}
+    </Slider>
   )
 }
-
-export default TestimonialsSlider
