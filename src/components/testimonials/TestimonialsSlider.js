@@ -55,7 +55,7 @@ export default function TestimonialsSlider() {
     slidesToShow: Math.min(len, 1),
     slidesToScroll: 1,
 
-    // min-width breakpoints
+    // min-width breakpoint
     responsive: [
       { breakpoint: 640,  settings: { slidesToShow: Math.min(len, 2) } },
       { breakpoint: 1024, settings: { slidesToShow: Math.min(len, 3) } },
