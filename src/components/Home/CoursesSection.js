@@ -1,17 +1,8 @@
-"use client"
-
-import { motion } from "framer-motion"
-import CourseCard from "../cards/CourseCard"
-import { coursesData } from "../data/CoursesData"
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.08 } },
-}
+import CourseGrid from "./CourseGrid"
+import { coursesData } from "../data/CoursesData" // Data is loaded on the server
 
 const CoursesSection = () => {
-  // first 4 only (exactly like your screenshot). add more data entries later;
-  // grid will keep 4 per row: 1st row = first 4, 2nd row = next 4, etc.
+  // Data processing happens on the server!
   const visible = coursesData.slice(0, 4)
 
   return (
@@ -23,17 +14,9 @@ const CoursesSection = () => {
             excites your child
           </h2>
         </div>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {visible.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </motion.div>
+        
+        {/* Render the Client Component here, passing data as props */}
+        <CourseGrid visibleCourses={visible} />
       </div>
     </section>
   )

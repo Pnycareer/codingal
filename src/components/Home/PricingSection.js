@@ -1,13 +1,5 @@
-"use client"
-
-import { motion } from "framer-motion"
-import PricingCard from "../pricing/PricingCard"
-import { pricingData } from "../data/PricingData"
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.08 } },
-}
+import PricingGrid from "../pricing/PricingGrid"
+import { pricingData } from "../data/PricingData" // Data is imported on the server
 
 const PricingSection = () => {
   return (
@@ -22,16 +14,8 @@ const PricingSection = () => {
           </h2>
         </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 gap-6 md:grid-cols-3"
-        >
-          {pricingData.map((p) => (
-            <PricingCard key={p.id} plan={p} />
-          ))}
-        </motion.div>
+        {/* The component with animation is rendered here */}
+        <PricingGrid plans={pricingData} />
       </div>
     </section>
   )

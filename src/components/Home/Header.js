@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import React from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Star } from "lucide-react"
-import { FaWhatsapp } from "react-icons/fa"
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Star } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 // simple variants for staggered fade-up
 const container = {
@@ -15,11 +15,11 @@ const container = {
     opacity: 1,
     transition: { staggerChildren: 0.08, delayChildren: 0.1 },
   },
-}
+};
 const item = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-}
+};
 
 const Header = () => {
   return (
@@ -77,13 +77,11 @@ const Header = () => {
           {/* WHATSAPP CTA */}
           <motion.div variants={item} className="mt-6 md:mt-8">
             <a
-              href="https://wa.me/923001234567" // TODO: replace with your number (no +)
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button
-                className="group h-12 rounded-2xl bg-emerald-500 px-6 text-base font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-emerald-600 active:scale-[0.99]"
-              >
+              <Button className="group h-12 rounded-2xl bg-emerald-500 px-6 text-base font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-emerald-600 active:scale-[0.99]">
                 <FaWhatsapp className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6" />
                 Contact Us
               </Button>
@@ -130,9 +128,8 @@ const Header = () => {
               {/* Replace with your hero collage image */}
               <div className="relative mx-auto aspect-[16/9] w-full max-w-[680px] overflow-hidden rounded-xl">
                 <Image
-                  src="https://img.lovepik.com/element/40083/7618.png_1200.png"
+                  src="/headerimage.png"
                   alt="Kids learning"
-                  unoptimized={true}
                   fill
                   className="object-cover"
                 />
@@ -155,7 +152,12 @@ const Header = () => {
           <motion.div
             aria-hidden
             animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.4,
+            }}
             className="pointer-events-none absolute -right-5 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-zinc-700 shadow-md backdrop-blur md:block"
           >
             🧠 AI
@@ -163,7 +165,7 @@ const Header = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
