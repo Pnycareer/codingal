@@ -42,7 +42,7 @@ export default function TestimonialsSlider() {
   }, [mounted])
 
  const settings = {
-  mobileFirst: false,
+  mobileFirst: true, // FIX: Use mobile-first approach
   infinite: len > 1,
   speed: 500,
   arrows: true,
@@ -51,15 +51,17 @@ export default function TestimonialsSlider() {
   dots: false,
   autoplay: false,
 
-  // base = phones (<768px)
-  slidesToShow: Math.min(len, 3),
+  slidesToShow: Math.min(len, 1), // FIX: Set default to 1 for mobile screens
   slidesToScroll: 1,
 
-  // MIN-width breakpoints (because mobileFirst is true)
+  // MIN-width breakpoints (will correctly apply settings at or above these widths)
   responsive: [
-    { breakpoint: 768,  settings: { slidesToShow: Math.min(len, 1) } },  // ≥768px
-    { breakpoint: 1200, settings: { slidesToShow: Math.min(len, 3) } },  // ≥1200px
-    { breakpoint: 1536, settings: { slidesToShow: Math.min(len, 4) } },  // ≥1536px
+    // Tablet (min-width: 768px)
+    { breakpoint: 768,  settings: { slidesToShow: Math.min(len, 2) } },
+    // Desktop (min-width: 1200px)
+    { breakpoint: 1200, settings: { slidesToShow: Math.min(len, 3) } },
+    // Large Desktop (min-width: 1536px)
+    { breakpoint: 1536, settings: { slidesToShow: Math.min(len, 4) } },
   ],
 }
 
