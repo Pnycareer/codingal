@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import React from "react"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Star } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa"
 
 // simple variants for staggered fade-up
 const container = {
@@ -15,17 +15,22 @@ const container = {
     opacity: 1,
     transition: { staggerChildren: 0.08, delayChildren: 0.1 },
   },
-};
+}
 const item = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+}
+
+// Define the custom purple color for use in the radial gradient (Hex: #6633FF)
+// We will use a highly transparent version for a "light" gradient effect.
+const PURPLE_ACCENT_RGBA = 'rgba(102, 51, 255, 0.1)';
 
 const Header = () => {
   return (
-    <section className="relative overflow-hidden bg-[#FFECEC]">
-      {/* subtle vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_300px_at_20%_10%,rgba(255,170,150,0.25),transparent_60%)]" />
+    // Background remains light for contrast and readability
+    <section className="relative overflow-hidden bg-[#D8F2F9]">
+      {/* subtle vignette - color adjusted to the new purple with low opacity (0.1) for a light glow */}
+      <div className={`pointer-events-none absolute inset-0 bg-[radial-gradient(600px_300px_at_20%_10%,${PURPLE_ACCENT_RGBA},transparent_60%)]`} />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:grid-cols-2 md:gap-14 md:px-10 lg:py-20">
         {/* LEFT */}
@@ -43,11 +48,13 @@ const Header = () => {
             Top-rated{" "}
             <span className="relative inline-block">
               <span className="relative z-10">online</span>
-              <span className="absolute -bottom-1 left-0 h-2 w-full bg-orange-300"></span>
+              {/* Highlight color changed to PNY Genius Golden Yellow */}
+              <span className="absolute -bottom-1 left-0 h-2 w-full bg-amber-400"></span>
             </span>{" "}
             <span className="relative inline-block">
               <span className="relative z-10">programming</span>
-              <span className="absolute -bottom-1 left-0 h-2 w-full bg-orange-300"></span>
+              {/* Highlight color changed to PNY Genius Golden Yellow */}
+              <span className="absolute -bottom-1 left-0 h-2 w-full bg-amber-400"></span>
             </span>
             ,<br />
             <span> Coding &amp; AI classes for kids </span>
@@ -55,33 +62,35 @@ const Header = () => {
             <span> become the innovators of tomorrow</span>
           </motion.h1>
 
-          {/* BENEFITS */}
+          {/* BENEFITS - Icon colors updated to use PNY Genius Golden Yellow */}
           <motion.ul
             variants={item}
             className="mt-6 space-y-4 text-lg text-zinc-800 md:mt-8"
           >
             <li className="flex items-center gap-3">
-              <span className="text-red-500">🔴</span>
+              <span className="text-amber-400">🔴</span>
               <span>Engaging live video lessons</span>
             </li>
             <li className="flex items-center gap-3">
-              <span className="text-amber-600">🏅</span>
+              <span className="text-amber-400">🏅</span>
               <span>Learn from top-rated, world-class instructors</span>
             </li>
             <li className="flex items-center gap-3">
-              <span className="text-orange-500">📈</span>
+              <span className="text-amber-400">📈</span>
               <span>Boost confidence with measurable progress</span>
             </li>
           </motion.ul>
 
-          {/* WHATSAPP CTA */}
+          {/* WHATSAPP CTA - Button color changed to PNY Genius Golden Yellow */}
           <motion.div variants={item} className="mt-6 md:mt-8">
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
+              href="https://wa.me/923001234567" // TODO: replace with your number (no +)
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="group h-12 rounded-2xl bg-emerald-500 px-6 text-base font-semibold text-white transition-transform hover:scale-[1.02] hover:bg-emerald-600 active:scale-[0.99]">
+              <Button
+                className="group h-12 rounded-2xl bg-amber-400 px-6 text-base font-semibold text-zinc-900 transition-transform hover:scale-[1.02] hover:bg-amber-500 active:scale-[0.99]"
+              >
                 <FaWhatsapp className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6" />
                 Contact Us
               </Button>
@@ -96,7 +105,7 @@ const Header = () => {
             ⚡ Join 1000+ students who took a lesson in the last 24 hours!
           </motion.p>
 
-          {/* STATS */}
+          {/* STATS - Star color updated to use PNY Genius Golden Yellow */}
           <motion.div
             variants={item}
             className="mt-6 flex flex-wrap items-center gap-8 text-zinc-900 md:mt-8"
@@ -110,7 +119,7 @@ const Header = () => {
               <p className="text-zinc-600">Countries</p>
             </div>
             <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-500" />
+              <Star className="h-5 w-5 text-amber-400 fill-amber-400" />
               <p className="text-zinc-700">4.6 / 5 stars</p>
             </div>
           </motion.div>
@@ -128,8 +137,9 @@ const Header = () => {
               {/* Replace with your hero collage image */}
               <div className="relative mx-auto aspect-[16/9] w-full max-w-[680px] overflow-hidden rounded-xl">
                 <Image
-                  src="/headerimage.png"
+                  src="https://img.lovepik.com/element/40083/7618.png_1200.png"
                   alt="Kids learning"
+                  unoptimized={true}
                   fill
                   className="object-cover"
                 />
@@ -152,12 +162,7 @@ const Header = () => {
           <motion.div
             aria-hidden
             animate={{ y: [0, 8, 0] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.4,
-            }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
             className="pointer-events-none absolute -right-5 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-zinc-700 shadow-md backdrop-blur md:block"
           >
             🧠 AI
@@ -165,7 +170,7 @@ const Header = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

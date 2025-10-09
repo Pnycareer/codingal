@@ -18,6 +18,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "em-content.zobj.net",
       },
+      {
+        protocol: 'https',
+        hostname: 'www.pnygenius.com',
+      },
     ],
   },
 };

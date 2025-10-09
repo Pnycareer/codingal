@@ -3,6 +3,9 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 
+// Assuming you have Next.js Image component available, which is necessary.
+import Image from "next/image";
+
 const TrustStars = ({ count = 5 }) => {
   return (
     <div className="flex gap-1">
@@ -33,13 +36,33 @@ const ReviewCard = ({ r }) => {
           {r.title}
         </h4>
 
+        {/* Display the full review body */}
         <p className="mt-2 line-clamp-3 text-sm leading-6 text-zinc-700">
           {r.body}
         </p>
 
-        <div className="mt-4 border-t border-zinc-100 pt-3 text-xs text-zinc-500">
-          <span className="font-semibold lowercase text-zinc-700">{r.author}</span>, {r.date}
+        {/* AUTHOR and IMAGE SECTION */}
+        <div className="mt-4 border-t border-zinc-100 pt-3 flex items-center gap-3">
+          
+          {/* Student Thumbnail */}
+          {r.imageUrl && (
+            <div className="relative h-10 w-10 overflow-hidden rounded-full shrink-0">
+                <Image
+                    src={r.imageUrl}
+                    alt={r.author}
+                    fill
+                    className="object-contain"
+                />
+            </div>
+          )}
+
+          {/* Author Name and Date */}
+          <div className="text-xs text-zinc-500">
+            <p className="font-semibold text-zinc-700 text-sm">{r.author}</p>
+            <p>{r.date}</p>
+          </div>
         </div>
+        
       </CardContent>
     </Card>
   )
