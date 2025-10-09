@@ -5,7 +5,7 @@ import PricingSection from "./PricingSection";
 import BenefitsSection from "../benefits/BenefitsSection";
 import TestimonialsSlider from "../testimonials/TestimonialsSlider";
 import ReviewsSection from "../reviews/ReviewsSection";
-import StudentProjectsShowcase from "../projects/ProjectCard";
+import StudentProjectsShowcase from "../projects/StudentProjectsShowcase";
 
 const MainHome = () => {
   return (
@@ -16,7 +16,7 @@ const MainHome = () => {
       <BenefitsSection />
       <TestimonialsSlider />
       <ReviewsSection />
-      <StudentProjectsShowcase/>
+      <StudentProjectsShowcase />
     </>
   );
 };
