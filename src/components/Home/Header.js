@@ -45,21 +45,16 @@ const Header = () => {
             variants={item}
             className="text-[36px] font-extrabold leading-[1.12] text-zinc-900 md:text-[32px]"
           >
-            Top-rated{" "}
+            Top-Rated{" "}
             <span className="relative inline-block">
               <span className="relative z-10">online</span>
               {/* Highlight color changed to PNY Genius Golden Yellow */}
-              <span className="absolute -bottom-1 left-0 h-2 w-full bg-amber-400"></span>
+              <span className="absolute -bottom-1 left-0 h-2 w-full bg-amber-40"></span>
             </span>{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10">programming</span>
-              {/* Highlight color changed to PNY Genius Golden Yellow */}
-              <span className="absolute -bottom-1 left-0 h-2 w-full bg-amber-400"></span>
-            </span>
-            ,<br />
+        
             <span> Coding &amp; AI classes for kids </span>
             <br />
-            <span> become the innovators of tomorrow</span>
+            <span> Build the Innovators of Tomorrow!</span>
           </motion.h1>
 
           {/* BENEFITS - Icon colors updated to use PNY Genius Golden Yellow */}
@@ -68,28 +63,28 @@ const Header = () => {
             className="mt-6 space-y-4 text-lg text-zinc-800 md:mt-8"
           >
             <li className="flex items-center gap-3">
-              <span className="text-amber-400">🔴</span>
-              <span>Engaging live video lessons</span>
+              <span>🔹</span>
+              <span>Fun, Interactive Coding & AI Lessons</span>
             </li>
             <li className="flex items-center gap-3">
-              <span className="text-amber-400">🏅</span>
-              <span>Learn from top-rated, world-class instructors</span>
+              <span>🏆</span>
+              <span>Learn from Expert Mentors in Real-Time</span>
             </li>
             <li className="flex items-center gap-3">
-              <span className="text-amber-400">📈</span>
-              <span>Boost confidence with measurable progress</span>
+              <span>🚀</span>
+              <span>Build Real Projects & Gain Future-Ready Skills</span>
             </li>
           </motion.ul>
 
           {/* WHATSAPP CTA - Button color changed to PNY Genius Golden Yellow */}
           <motion.div variants={item} className="mt-6 md:mt-8">
             <a
-              href="https://wa.me/923001234567" // TODO: replace with your number (no +)
+              href="https://wa.me/923014497903" // TODO: replace with your number (no +)
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button
-                className="group h-12 rounded-2xl bg-amber-400 px-6 text-base font-semibold text-zinc-900 transition-transform hover:scale-[1.02] hover:bg-amber-500 active:scale-[0.99]"
+                className="h-12  bg-green-400 px-6 text-base font-semibold text-zinc-900 transition-transform hover:scale-[1.02] hover:bg-green-500 active:scale-[0.99]"
               >
                 <FaWhatsapp className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6" />
                 Contact Us
@@ -102,11 +97,11 @@ const Header = () => {
             variants={item}
             className="mt-4 text-sm text-zinc-600 md:mt-5"
           >
-            ⚡ Join 1000+ students who took a lesson in the last 24 hours!
+            ⚡ Join today and let your child start their journey to become a future innovator!
           </motion.p>
 
           {/* STATS - Star color updated to use PNY Genius Golden Yellow */}
-          <motion.div
+          {/* <motion.div
             variants={item}
             className="mt-6 flex flex-wrap items-center gap-8 text-zinc-900 md:mt-8"
           >
@@ -122,7 +117,7 @@ const Header = () => {
               <Star className="h-5 w-5 text-amber-400 fill-amber-400" />
               <p className="text-zinc-700">4.6 / 5 stars</p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* RIGHT */}
@@ -137,11 +132,10 @@ const Header = () => {
               {/* Replace with your hero collage image */}
               <div className="relative mx-auto aspect-[16/9] w-full max-w-[680px] overflow-hidden rounded-xl">
                 <Image
-                  src="https://img.lovepik.com/element/40083/7618.png_1200.png"
+                  src="/headerimage.jpg"
                   alt="Kids learning"
-                  unoptimized={true}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
               <p className="mt-3 text-center text-sm text-zinc-700 md:text-base">

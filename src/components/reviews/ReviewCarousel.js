@@ -15,7 +15,7 @@ export default function ReviewCarousel({ reviews }) {
   // Define the base width class for mobile/small screens (shows 1.2 cards to hint scrolling)
   // This layout matches the original slick behavior of showing 1 card fully and a bit of the next.
   const getWidthClass = () => {
-    if (typeof window === 'undefined') return "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5";
+    if (typeof window === 'undefined') return "w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4";
     
     // NOTE: For reviews, we use the mobile-first approach where:
     // < 540px: Show 1 card (w-full)

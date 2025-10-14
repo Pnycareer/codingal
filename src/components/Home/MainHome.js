@@ -14,7 +14,7 @@ const MainHome = () => {
       <CoursesSection />
       <PricingSection />
       <BenefitsSection />
-      <TestimonialsSlider />
+      {/* <TestimonialsSlider /> */}
       <ReviewsSection />
       <StudentProjectsShowcase />
     </>
