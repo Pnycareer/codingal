@@ -7,7 +7,7 @@ const StudentProjectsShowcase = () => {
   return (
     // Based on the image, the background is a very light pink/red.
     // We'll use a very light red tone to match.
-    <section className="relative overflow-hidden bg-red-50 py-16">
+    <section className="relative overflow-hidden bg-[#d2f0f8] py-16">
       <div className="mx-auto max-w-7xl px-6">
         {/* Section Heading */}
         <div className="mb-12 text-center">

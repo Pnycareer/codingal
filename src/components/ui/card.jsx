@@ -6,7 +6,7 @@ function Card({
   bg = "bg-card",
   text = "text-card-foreground",
   border = "border",
-  padding = "py-6",
+  padding = "",
   shadow = "shadow-sm",
   children,
   ...props
