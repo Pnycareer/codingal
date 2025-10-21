@@ -11,12 +11,18 @@ const MainHome = () => {
   return (
     <>
       <Header />
-      <CoursesSection />
-      <PricingSection />
+      <div id="courses">
+        <CoursesSection />
+      </div>
+      <div id="plans">
+        <PricingSection />
+      </div>
       <BenefitsSection />
       {/* <TestimonialsSlider /> */}
       <ReviewsSection />
-      <StudentProjectsShowcase />
+      <div id="projects">
+        <StudentProjectsShowcase />
+      </div>
     </>
   );
 };

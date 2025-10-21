@@ -21,7 +21,7 @@ const CourseGrid = ({ visibleCourses }) => { // Takes pre-rendered data as a pro
                 <CourseCard key={course.id} course={course} />
             ))}
         </motion.div>
-    )
+    )   
 }
 
 export default CourseGrid;

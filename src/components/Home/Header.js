@@ -75,7 +75,7 @@ const Header = () => {
             className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm font-medium text-sky-700 shadow-sm backdrop-blur"
           >
             <Sparkles className="h-4 w-4" />
-            Award-winning virtual campus for young innovators
+            Award-winning campus for young innovators
           </motion.div>
 
           {/* EXACT HEADLINE & LINE-BREAKS */}

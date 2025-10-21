@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Activity,
   BookOpen,
@@ -12,16 +12,16 @@ import {
   Download,
   GraduationCap,
   PlayCircle,
-} from "lucide-react"
+} from "lucide-react";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
-}
+};
 
 const Meta = ({ icon: Icon, children }) => {
   if (!children) {
-    return null
+    return null;
   }
 
   return (
@@ -29,19 +29,19 @@ const Meta = ({ icon: Icon, children }) => {
       <Icon className="h-4 w-4 text-red-500" />
       <span className="truncate">{children}</span>
     </span>
-  )
-}
+  );
+};
 
 const Outcome = ({ text }) => (
   <li className="flex items-start gap-2 text-[15px] leading-6 text-zinc-800">
     <CheckCircle2 className="mt-[2px] h-4 w-4 flex-none text-red-500" />
     <span>{text}</span>
   </li>
-)
+);
 
 const CourseCard = ({ course }) => {
   if (!course) {
-    return null
+    return null;
   }
 
   const {
@@ -56,10 +56,10 @@ const CourseCard = ({ course }) => {
     outcomes = [],
     ribbonText = "AI",
     hasPreview = true,
-  } = course
+  } = course;
 
-  const safeDescription = description?.trim()
-  const visibleOutcomes = outcomes.filter(Boolean).slice(0, 5)
+  const safeDescription = description?.trim();
+  const visibleOutcomes = outcomes.filter(Boolean).slice(0, 5);
 
   return (
     <motion.div variants={cardVariants} className="h-full">
@@ -87,11 +87,7 @@ const CourseCard = ({ course }) => {
             </div>
           )}
 
-          {hasPreview && (
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80 transition-opacity duration-300 group-hover:opacity-100">
-              <PlayCircle className="h-12 w-12 text-white drop-shadow-[0_6px_12px_rgba(0,0,0,0.35)]" />
-            </div>
-          )}
+         
         </div>
 
         <CardContent className="flex grow flex-col px-5 py-6 sm:px-6">
@@ -127,15 +123,23 @@ const CourseCard = ({ course }) => {
           )}
 
           <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-           
-            <Button className="h-11  bg-transparent border-2 rounded-2xl  px-6 text-sm font-semibold text-red-600 hover:bg-red-100 sm:text-base">
-              Try a free lesson
-            </Button>
+            {course.link && (
+              <a
+                href={course.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button className="h-11 w-full bg-transparent border-2 rounded-2xl px-6 text-sm font-semibold text-red-600 hover:bg-red-100 sm:text-base">
+                  Details
+                </Button>
+              </a>
+            )}
           </div>
         </CardContent>
       </Card>
     </motion.div>
-  )
-}
+  );
+};
 
-export default CourseCard
+export default CourseCard;
