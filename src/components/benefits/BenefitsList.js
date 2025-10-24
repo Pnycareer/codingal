@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -7,12 +7,15 @@ import { Sparkles } from "lucide-react";
 
 const container = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
-}
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0.05 },
+  },
+};
 const item = {
   hidden: { opacity: 0, y: 12 },
   show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
-}
+};
 
 const BenefitsList = ({ benefits }) => {
   return (
@@ -38,7 +41,7 @@ const BenefitsList = ({ benefits }) => {
             Complete
           </span>
           <span className="ml-2">
-            a free trial lesson to unlock additional scholarships!
+            Join Us In Group To Unlock Additional Discounts!
           </span>
         </div>
       </div>
@@ -61,11 +64,7 @@ const BenefitsList = ({ benefits }) => {
           className="mx-auto max-w-3xl space-y-3 text-[15px] leading-7 text-zinc-800"
         >
           {benefits.map((b, i) => (
-            <motion.li
-              key={i}
-              variants={item}
-              className="relative pl-5"
-            >
+            <motion.li key={i} variants={item} className="relative pl-5">
               {/* blue dot like screenshot - Updated to dark blue bullet */}
               <span className="absolute left-0 top-2.5 h-2 w-2 rounded-full bg-blue-800" />
               {b.text}
@@ -76,18 +75,23 @@ const BenefitsList = ({ benefits }) => {
         {/* bottom line + CTA - Divider color updated */}
         <div className="mt-8 border-t border-blue-200 pt-6 text-center">
           <p className="mb-4 text-sm text-zinc-600">
-            Start your journey today with a free trial class at your preferred date &amp; time.
-            No commitments, fees, or credit card required.
+            Start your journey today with a free trial class at your preferred
+            date &amp; time. No commitments, fees, or credit card required.
           </p>
 
           {/* Button color updated to PNY Genius's Golden Yellow accent */}
-          <Button className="mx-auto h-12 rounded-2xl bg-amber-400 px-6 text-base font-semibold text-white hover:bg-amber-500">
-            Try a Free Demo class
-          </Button>
+          <a
+            className="mx-auto h-12 rounded-2xl py-2 bg-amber-400 px-6 text-base font-semibold text-white hover:bg-amber-500"
+            href="https://wa.me/923014497903"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            REGISTER NOW
+          </a>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default BenefitsList;
