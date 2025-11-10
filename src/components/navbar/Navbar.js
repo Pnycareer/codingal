@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const Navbar = () => {
   const handleScroll = (id) => {
@@ -20,9 +21,14 @@ const Navbar = () => {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 md:px-10">
         {/* Left: Logo */}
-        <div className="flex items-center gap-2">
+        <Link
+          href="https://pnygenius.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2"
+        >
           <Image
-            src="https://www.pnygenius.com/assets/uploads//logo/1618946219-school-logo.png" 
+            src="https://www.pnygenius.com/assets/uploads//logo/1618946219-school-logo.png"
             alt="Logo"
             width={40}
             height={40}
@@ -31,7 +37,7 @@ const Navbar = () => {
           <span className="text-lg font-semibold text-slate-800">
             PNY Genius
           </span>
-        </div>
+        </Link>
 
         {/* Center: Website Name */}
         <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-sky-500 bg-clip-text text-transparent tracking-tight">
